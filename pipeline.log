@@ -1,0 +1,74 @@
+2026-08-07 00:14:24,832 [INFO] Api sorgusu gonderildi. Status:200
+2026-08-07 00:14:24,980 [ERROR] Verilenler bazasina yazaeken xeta bas verdi.
+2026-08-07 00:14:24,999 [INFO] Higher-woter mark: (son tarix):2026-08-06
+2026-08-07 00:14:24,999 [INFO] Gun sayi: 1
+2026-08-07 01:25:53,761 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 01:25:53,764 [INFO] High-water mark: (son tarix):2026-08-07
+2026-08-07 01:25:53,765 [INFO] Gun sayi: 0
+2026-08-07 12:15:46,817 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 12:15:46,826 [INFO] High-water mark: (son tarix):2026-08-07
+2026-08-07 12:15:46,826 [INFO] Gun sayi: 0
+2026-08-07 12:18:07,447 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 12:18:07,449 [INFO] High-water mark: (son tarix):2026-08-07
+2026-08-07 12:18:07,449 [INFO] Gun sayi: 0
+2026-08-07 13:32:16,540 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 13:36:25,207 [INFO] Raw data fayla yazıldı: data\raw\snapshot_markets_20260807_133625.json
+2026-08-07 13:36:25,404 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 13:36:25,407 [INFO] bitcoin üçün high-water mark: 2026-08-07
+2026-08-07 13:36:25,408 [INFO] bitcoin üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:26,410 [INFO] solana üçün high-water mark: 2026-08-07
+2026-08-07 13:36:26,410 [INFO] solana üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:27,412 [INFO] cardano üçün high-water mark: 2026-08-07
+2026-08-07 13:36:27,412 [INFO] cardano üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:28,414 [INFO] ethereum üçün high-water mark: 2026-08-07
+2026-08-07 13:36:28,415 [INFO] ethereum üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:29,417 [INFO] binancecoin üçün high-water mark: 2026-08-07
+2026-08-07 13:36:29,417 [INFO] binancecoin üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:30,420 [INFO] usd-coin üçün high-water mark: 2026-08-07
+2026-08-07 13:36:30,421 [INFO] usd-coin üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:31,423 [INFO] tether üçün high-water mark: 2026-08-07
+2026-08-07 13:36:31,423 [INFO] tether üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:32,426 [INFO] tron üçün high-water mark: 2026-08-07
+2026-08-07 13:36:32,426 [INFO] tron üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:33,428 [INFO] ripple üçün high-water mark: 2026-08-07
+2026-08-07 13:36:33,429 [INFO] ripple üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:36:34,430 [INFO] monero üçün high-water mark: 2026-08-07
+2026-08-07 13:36:34,431 [INFO] monero üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:45:26,080 [INFO] Raw data fayla yazıldı: data\raw\snapshot_markets_20260807_134526.json
+2026-08-07 13:45:26,271 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 13:45:26,274 [INFO] bitcoin üçün high-water mark: 2026-08-07
+2026-08-07 13:45:26,274 [INFO] bitcoin üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:45:27,276 [INFO] solana üçün high-water mark: 2026-08-07
+2026-08-07 13:45:27,276 [INFO] solana üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:45:28,279 [INFO] cardano üçün high-water mark: 2026-08-07
+2026-08-07 13:45:28,279 [INFO] cardano üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:45:29,281 [INFO] ethereum üçün high-water mark: 2026-08-07
+2026-08-07 13:45:29,281 [INFO] ethereum üçün artıq güncəl data var, sorğu göndərilmir.
+2026-08-07 13:45:30,284 [INFO] bnb üçün high-water mark: None
+2026-08-07 13:45:46,974 [ERROR] API Xətası: 404 Client Error: Not Found for url: https://api.coingecko.com/api/v3/coins/bnb/market_chart?vs_currency=usd&days=365
+Traceback (most recent call last):
+  File "c:\Users\Acer\OneDrive\Desktop\Crypto Market\ingestion.py", line 44, in safe_request
+    res.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Acer\OneDrive\Desktop\Crypto Market\venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/api/v3/coins/bnb/market_chart?vs_currency=usd&days=365
+2026-08-07 17:08:40,152 [INFO] Raw data fayla yazıldı: data\raw\snapshot_markets_20260807_170840.json
+2026-08-07 17:08:40,315 [INFO] Melumat PostgreSql bazasina yazildi
+2026-08-07 17:08:40,318 [INFO] bitcoin üçün high-water mark: 2026-08-07
+2026-08-07 17:08:40,319 [INFO] bitcoin üçün artıq data var, sorğu göndərilmir
+2026-08-07 17:08:41,378 [INFO] solana üçün high-water mark: 2026-08-07
+2026-08-07 17:08:41,378 [INFO] solana üçün artıq data var, sorğu göndərilmir
+2026-08-07 17:08:42,392 [INFO] cardano üçün high-water mark: 2026-08-07
+2026-08-07 17:08:42,392 [INFO] cardano üçün artıq data var, sorğu göndərilmir
+2026-08-07 17:08:43,418 [INFO] ethereum üçün high-water mark: 2026-08-07
+2026-08-07 17:08:43,418 [INFO] ethereum üçün artıq data var, sorğu göndərilmir
+2026-08-07 17:08:44,426 [INFO] bnb üçün high-water mark: None
+2026-08-07 17:09:00,828 [ERROR] API Xətası: 404 Client Error: Not Found for url: https://api.coingecko.com/api/v3/coins/bnb/market_chart?vs_currency=usd&days=365
+Traceback (most recent call last):
+  File "c:\Users\Acer\OneDrive\Desktop\Crypto Market\ingestion.py", line 44, in safe_request
+    res.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Acer\OneDrive\Desktop\Crypto Market\venv\Lib\site-packages\requests\models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://api.coingecko.com/api/v3/coins/bnb/market_chart?vs_currency=usd&days=365

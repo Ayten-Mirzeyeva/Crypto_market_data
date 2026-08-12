@@ -1,0 +1,7 @@
+target_currency: "usd"
+history_days: 30
+tracked_coins:
+  - bitcoin
+  - ethereum
+  - tether
+  - usdc
