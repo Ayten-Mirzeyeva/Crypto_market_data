@@ -11,17 +11,18 @@ from loader import (
     load_quarantine_data
 )
 import pandera.pandas as pa
+from pandera.errors import SchemaErrors
 
 
 bad_data = pd.DataFrame(
     {
-        "coin_id": 'bitcoin',
-        "price": -50,
-        'symbol': 'btb',
-        'date' : 'today',
-        'volume': 200000,
-        'market_cap': 100000,
-        'name' : 'Bitcoin'
+        "coin_id": ['bitcoin'],
+        "price": [-50],
+        'symbol':['btb'],
+        'date' : ['today'],
+        'volume': [200000],
+        'market_cap':[ 100000],
+        'name' : ['Bitcoin']
     }
 )
 print('Bad data:')
@@ -29,10 +30,12 @@ print(bad_data)
 
 try:
     current_schema.validate(bad_data,
-                            lazy= True
-                            )
+                            lazy= True)
+    
     print('Data validdir!')
+    
 except pa.errors.SchemaError as exc:
     print('Data Rejected!')
     print('Data invaliddir!')
     print(exc)
+    print(exc.failure_cases)

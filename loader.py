@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine, text
 from config import DATABASE_URL
+
 logger = logging.getLogger(__name__)
 
 engine = create_engine(DATABASE_URL)
@@ -172,3 +173,39 @@ def load_quarantine_data(df: pd.DataFrame):
     logger.warning( f"{len(df)} sətir staging.quarantine "
         f"cədvəlinə yazıldı."
         )
+    
+    
+def check_mart_views():
+
+    query = text("""
+        SELECT table_name
+        FROM information_schema.views
+        WHERE table_schema = 'mart'
+    """)
+
+    with engine.connect() as connection:
+        result = connection.execute(query)
+
+        views = {
+            row[0]
+            for row in result
+        }
+
+    required_views = {
+        "daily_return",
+        "moving_averages",
+        "rolling_volatility",
+        "max_drawdown",
+        "volatility_ranking"
+    }
+
+    missing_views = required_views - views
+
+    if missing_views:
+        raise RuntimeError(
+            f"Missing mart views: {missing_views}"
+        )
+
+    logger.info(
+        "All mart views are available."
+    )

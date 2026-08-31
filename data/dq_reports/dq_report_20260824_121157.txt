@@ -1,0 +1,6 @@
+
+DATA QUALITY REPORT
+Rows received: 39
+Rows passed: 39
+Rows quarantined: 0
+Gaps found: 0

@@ -17,7 +17,6 @@ high_water_marks = {}
 for coin_id in CONFIG["tracked_coins"]:
     high_water_marks[coin_id] = get_high_water_mark(coin_id)
 
-
 result = run_ingestion(high_water_marks)
 
 current_df = result["current"]
@@ -65,13 +64,13 @@ rows_quarantined = len(anomalies_current)+ len(anomalies_history)
 
 gaps_found = len(gaps_current) + len(gaps_history)
 
-  
-with open ('dq_report.txt','w') as file:
-    file.write('\n DATA QUALITY REPORT \n') 
     
-    file.write(f'Rows received: {rows_received} \n')
-    file.write(f'Rows passed: {rows_passed}\n')
-    file.write(f'Rows quarantined: {rows_quarantined}\n')
-    file.write(f'Gaps found:  {gaps_found}\n')
+with open(report_file, "w", encoding="utf-8") as file:
+    file.write("\nDATA QUALITY REPORT\n")
+    file.write(f"Rows received: {rows_received}\n")
+    file.write(f"Rows passed: {rows_passed}\n")
+    file.write(f"Rows quarantined: {rows_quarantined}\n")
+    file.write(f"Gaps found: {gaps_found}\n") 
     
-logging.info(f'DQ Report yaradıldı! ')
+    logging.info(f'DQ Report yaradıldı! ')
+

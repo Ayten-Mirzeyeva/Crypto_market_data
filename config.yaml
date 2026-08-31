@@ -1,7 +1,7 @@
 target_currency: "usd"
-history_days: 30
+history_days: 365
 tracked_coins:
   - bitcoin
   - ethereum
   - tether
-  - usdc
+  - tron
