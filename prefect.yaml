@@ -16,10 +16,12 @@ build: null
 push: null
 
 # pull section allows you to provide instructions for cloning
-# this project in remote locations
-pull:
-- prefect.deployments.steps.set_working_directory:
-    directory: C:\Users\Acer\OneDrive\Desktop\Crypto Market
+# this project in remote locations. Left null: this project is deployed
+# locally via `python deploy.py` (prefect .serve()), which already runs
+# from the cloned repo's own working directory, so no machine-specific
+# path is needed here. A hardcoded absolute path here would break on
+# every machine except the one it was written on.
+pull: null
 
 # the deployments section allows you to provide configuration
 # for deploying flows

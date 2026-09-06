@@ -2,6 +2,7 @@ import logging
 import pandas as pd
 import pandera.pandas as pa
 from pandera import DataFrameSchema, Column, Check
+from pandera.errors import SchemaErrors
 
 logger = logging.getLogger(__name__)
 
@@ -149,20 +150,42 @@ def validate_data(df, data_type):
         )
 
     if data_type == "current":
-        validated_df = current_schema.validate(df,lazy=True)
-
+        schema = current_schema
     elif data_type == "historical":
-        validated_df = historical_schema.validate(df,lazy=True)
+        schema = historical_schema
     else:
         raise ValueError("data_type 'current' və ya 'historical' olmalıdır.")
 
-    duplicates = check_duplicates( validated_df)
+    schema_failures = pd.DataFrame()
+    try:
+        validated_df = schema.validate(df, lazy=True)
+    except SchemaErrors as exc:
+        failure_cases = exc.failure_cases
+        bad_indices = pd.Series(failure_cases["index"]).dropna().unique()
+        schema_failures = df.loc[df.index.isin(bad_indices)].copy()
+        schema_failures["reason"] = "Schema validation failed: " + failure_cases["check"].astype(str).iloc[0] if not failure_cases.empty else "Schema validation failed"
+
+        logger.warning(
+            f"{len(schema_failures)} sətir schema validasiyasından keçmədi "
+            f"və quarantine-ə göndərildi."
+        )
+
+        remaining_df = df.loc[~df.index.isin(bad_indices)].copy()
+        if remaining_df.empty:
+            validated_df = remaining_df
+        else:
+            validated_df = schema.validate(remaining_df, lazy=True)
+
+    duplicates = check_duplicates(validated_df)
 
     gaps = detect_gaps(validated_df)
 
     anomalies = detect_anomaly(validated_df)
 
     valid_df = validated_df[~validated_df.index.isin(anomalies.index)].copy()
+
+    if not schema_failures.empty:
+        anomalies = pd.concat([anomalies, schema_failures], ignore_index=True)
 
     if not duplicates.empty:
         logger.warning(f"{len(duplicates)} duplicate sətir tapıldı.")
@@ -173,4 +196,4 @@ def validate_data(df, data_type):
     if not anomalies.empty:
         logger.warning(f"{len(anomalies)} anomaly tapıldı.")
 
-    return valid_df,anomalies,duplicates,gaps
+    return valid_df, anomalies, duplicates, gaps

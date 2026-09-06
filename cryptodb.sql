@@ -140,7 +140,7 @@ create table staging.quarantine (
     quarantined_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP );
 
 
-alter view staging.quarantine owner to postgres;
+alter table staging.quarantine owner to postgres;
 
 select coin_id,
     min(date) as min_date,

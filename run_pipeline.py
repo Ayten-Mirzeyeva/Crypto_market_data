@@ -22,6 +22,10 @@ result = run_ingestion(high_water_marks)
 current_df = result["current"]
 historical_df = result["historical"]
 
+valid_current = pd.DataFrame()
+anomalies_current = pd.DataFrame()
+duplicates_current = pd.DataFrame()
+gaps_current = pd.DataFrame()
 
 if not current_df.empty:
     (   valid_current,

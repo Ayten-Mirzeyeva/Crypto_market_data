@@ -187,8 +187,8 @@ Crypto Market/
 ### 1. Clone the repository
 
 ```bash
-git clone <https://github.com/Ayten-Mirzeyeva/Crypto_market_data.git>
-cd Crypto-Market
+git clone https://github.com/Ayten-Mirzeyeva/Crypto_market_data.git
+cd Crypto_market_data
 ```
 
 ### 2. Create a virtual environment
@@ -211,17 +211,26 @@ pip install -r requirements.txt
 
 ### 4. Configure environment variables
 
-Create a `.env` file based on `.env.example`.
+Create a `.env` file based on `.env.example` and fill in:
 
-Add your API and PostgreSQL connection settings.
+* `API_KEY` — your CoinGecko Demo API key
+* `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME` — your PostgreSQL connection settings
 
-### 5. Run the pipeline manually
+### 5. Create the database schema
+
+Create an empty PostgreSQL database (matching `DB_NAME` in your `.env`), then run `cryptodb.sql` against it to create the `raw`, `staging`, and `mart` schemas, tables, and views, for example:
+
+```bash
+psql -h localhost -U postgres -d crypto_market -f cryptodb.sql
+```
+
+### 6. Run the pipeline manually
 
 ```bash
 python run_pipeline.py
 ```
 
-### 6. Run tests
+### 7. Run tests
 
 ```bash
 pytest -q
