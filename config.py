@@ -11,7 +11,7 @@ BASE_DIR = Path(__file__).resolve().parent
 with open(BASE_DIR / "config.yaml", "r", encoding="utf-8") as f:
     CONFIG = yaml.safe_load(f)
 
-API_KEY = os.getenv("apikey")
+API_KEY = os.getenv("API_KEY")
 API_URL = "https://api.coingecko.com/api/v3"
 
 DB_USER = os.getenv("DB_USER", "postgres")
